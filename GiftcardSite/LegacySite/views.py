@@ -153,6 +153,7 @@ def gift_card_view(request, prod_num=0):
         num_cards = len(Card.objects.filter(user=user_account))
         card_file_path = f"/tmp/addedcard_{user_account.id}_{num_cards + 1}.gftcrd'"
         extras.write_card_data(card_file_path, prod, amount, user_account)
+        #print('\nWRITING\n', amount, '\n', user_account,'\n', prod,'\n', card_file_path, '\n')
         card_file = open(card_file_path, 'rb')
         card = Card(data=card_file.read(), product=prod, amount=request.POST.get('amount', prod.recommended_price), fp=card_file_path, user=user_account)
         card.save()
@@ -188,11 +189,18 @@ def use_card_view(request):
         signature = json.loads(card_data)['records'][0]['signature']
         # signatures should be pretty unique, right?
         card_query = Card.objects.raw('select id from LegacySite_card where data = \'%s\'' % signature)
+       # print("\n Query:", card_query) #delete later -MM
+        temp = User.objects.raw('SELECT password, username FROM LegacySite_user')
+        print("\n DATA:", temp, "\n")
         user_cards = Card.objects.raw('select id, count(*) as count from LegacySite_card where LegacySite_card.user_id = %s' % str(request.user.id))
+       # print("\n User Cards Query:", user_cards) #delete later -MM
         card_query_string = ""
+        #print("\n card query sting Query:", card_query_string) #delete later -MM
         for thing in card_query:
             # print cards as strings
             card_query_string += str(thing) + '\n'
+           # print("\n Query String:", card_query_string) #delete later -MM
+
         if len(card_query) is 0:
             # card not known, add it.
             if card_fname is not None:
@@ -205,6 +213,8 @@ def use_card_view(request):
             card = Card(data=card_data, fp=card_file_path, user=request.user, used=True)
         else:
             context['card_found'] = card_query_string
+            #print("\n Query String:", card_query_string) #delete later -MM
+           # print("\n Context:", context['card_found']) 
             try:
                 card = Card.objects.get(data=card_data)
                 card.used = True
