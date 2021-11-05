@@ -1,14 +1,30 @@
-# AppSecAssignment2.1
-Hello students! In this assignment you will be fixing a barely-fuctioning 
-and deeply-flawed Django site used to sell and gift gift card files. Details 
-about this assignment can be found in the 
-[Instructions File](./GiftcardSite/HW2_Instructions.md).
+# AppSecAssignment2.1 Important Files and Directories
 
-For this assignment please include details you included in your write
-up for part 1 in the bugs.txt file and for part 2 in the 
-encryption_explanation.txt file. This will simplify submissions. The 
-write-up is very useful for partial credit, just in case you did not do
-as well in the programming goals of the assignment as you were expecting
-or hoping.
+## Part 1 Directory
 
-Good luck!
+### Attack1.txt
+Contains a text file with the url that when used, triggers the xxs attrack
+
+### Attack2.txt 
+Contains an example post request that when used, triggeres the csrf attack for a given user in order to force them to gift me their giftcard. More information on how this is done can be found in bugs.txt
+
+###A ttack3.txt
+Contains a post request that triggers the SQL injection that allows me to get the salted password for admin, and all users for that matter.
+
+### Attack4request.txt
+This contains a post request that triggers a command injection. THis is the official 'file' for this attack.
+
+### Attack4file.txt
+This is the text file i input into the use card page in ordre to trigger the attack. This is not the attack, but only a component used to partially generate the post request found in attack4request.txt
+
+### Bugs.txt
+Contains my list of bugs and explainations of how I carried out each attack
+
+### Fixes.md
+Explains what fixes I implemented in the code in order to fix the bugs
+
+### Signing-key.pub
+The ascii armoored gpg key. 
+
+## GitCardSite Directory
+The 'part 1 complete' commit marks the files needed for part 1, this inlcudes the bug fixes for my code. 
