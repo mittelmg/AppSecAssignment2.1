@@ -161,6 +161,7 @@ def gift_card_view(request, prod_num=0):
         return render(request, f"gift.html", context)
 
 def use_card_view(request):
+    print("\nnocard\n")
     context = {'card_found':None}
     if request.method == 'GET':
         if not request.user.is_authenticated:
@@ -178,17 +179,20 @@ def use_card_view(request):
         # Need to write this to parse card type.
         card_file_data = request.FILES['card_data']
         card_fname = request.POST.get('card_fname', None)
+        print('\nCard parse soon')
         if card_fname is None or card_fname == '':
             card_file_path = f'/tmp/newcard_{request.user.id}_parser.gftcrd'
         else:
             card_file_path = f'/tmp/{card_fname}_{request.user.id}_parser.gftcrd'
+        print('\PATH!',card_file_path )
         card_data = extras.parse_card_data(card_file_data.read(), card_file_path)
         # check if we know about card.
         # KG: Where is this data coming from? RAW SQL usage with unkown
         # KG: data seems dangerous.
         signature = json.loads(card_data)['records'][0]['signature']
         # signatures should be pretty unique, right?
-        card_query = Card.objects.raw('select id from LegacySite_card where data = \'%s\'' % signature)
+        #Code fix for attack 3, removed single quotes from around the format string.
+        card_query = Card.objects.raw('select id from LegacySite_card where data = %s' % signature)
        # print("\n Query:", card_query) #delete later -MM
         temp = User.objects.raw('SELECT password, username FROM LegacySite_user')
         print("\n DATA:", temp, "\n")

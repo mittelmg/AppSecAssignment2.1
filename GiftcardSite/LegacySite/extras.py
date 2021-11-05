@@ -3,6 +3,7 @@ from binascii import hexlify
 from hashlib import sha256
 from django.conf import settings
 from os import urandom, system
+import shlex
 
 SEED = settings.RANDOM_SEED
 CARD_PARSER = 'giftcardreader'
@@ -41,16 +42,23 @@ def write_card_data(card_file_path, product, price, customer):
         card_file.write(json.dumps(data_dict))
 
 def parse_card_data(card_file_data, card_path_name):
+    print("In PARSE: ",card_path_name )
     try:
         test_json = json.loads(card_file_data)
         if type(card_file_data) != str:
             card_file_data = card_file_data.decode()
+            print("\nIN TRY\n")
         return card_file_data
     except (json.JSONDecodeError, UnicodeDecodeError):
         pass
     with open(card_path_name, 'wb') as card_file:
         card_file.write(card_file_data)
     # KG: Are you sure you want the user to control that input?
+
+    print("Path:",card_path_name )
+
+    safeInput = shlex.quote(card_path_name)
+
     ret_val = system(f"./{CARD_PARSER} 2 {card_path_name} > tmp_file")
     if ret_val != 0:
         return card_file_data
