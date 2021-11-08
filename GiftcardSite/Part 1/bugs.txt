@@ -68,3 +68,7 @@ My input file had to be a text
 
 Remediation: 
 On line 60 of extras.py the input is placed into shlex.quote(card_path_name). This sanitizes the input and turns it into a string that cannot be treated as a command. I then place the sanitized output into my system call. The command injection is no longer possible. 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1463fb5fc292955ed70f0f67b06fd867de68f3cc
