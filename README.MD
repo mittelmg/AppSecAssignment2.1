@@ -18,7 +18,8 @@ This contains a post request that triggers a command injection. THis is the offi
 This is the text file i input into the use card page in ordre to trigger the attack. This is not the attack, but only a component used to partially generate the post request found in attack4request.txt
 
 ### Bugs.md
-Contains my list of bugs and explainations of how I carried out each attack
+Contains my list of bugs and explainations of how I carried out each attack.
+References the location of all changes I made in the code to fix the attacks. 
 
 ### Signing-key.pub
 The ascii armoored gpg key. 
@@ -29,5 +30,7 @@ The 'part 1 complete' commit marks the files needed for part 1, this inlcudes th
 The 'part 2 complete' commit marks the files needed for part 2. The 'making sure my repos match' commit is also for part 2. 
 
 ## Part 2 Directory
-Contains encryption-explaination.md which explains my changes 
+
+### encryption-explaination.md 
+which explains my changes 
 
