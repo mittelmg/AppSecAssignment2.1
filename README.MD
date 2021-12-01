@@ -24,7 +24,9 @@ Contains my list of bugs and explainations of how I carried out each attack
 The ascii armoored gpg key. 
 
 ## GitCardSite Directory
-The 'part 1 complete' commit marks the files needed for part 1, this inlcudes the bug fixes for my code. 
+The 'part 1 complete' commit marks the files needed for part 1, this inlcudes the bug fixes for my code. The made bugs.txt md commit is also used for part one as is the 
+'added more csrf tokens' commit.
+The 'part 2 complete' commit marks the files needed for part 2. The 'making sure my repos match' commit is also for part 2. 
 
 ## Part 2 Directory
 Contains encryption-explaination.md which explains my changes 
