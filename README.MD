@@ -34,3 +34,6 @@ The 'part 2 complete' commit marks the files needed for part 2. The 'making sure
 ### encryption-explaination.md 
 which explains my changes 
 
+## .github/workflows
+Regression testing
+
