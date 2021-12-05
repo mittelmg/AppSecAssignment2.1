@@ -1,4 +1,4 @@
-#Bugs
+# Bugs
 
 ## Attack 1 (attack1.txt): Cross site scripting vulnerability
 
@@ -72,3 +72,8 @@ My input file had to be a text
 
 ### Remediation: 
 On line 61 of extras.py the input is placed into shlex.quote(card_path_name). This sanitizes the input and turns it into a string that cannot be treated as a command. I then place the sanitized output into my system call on line 63. The command injection is no longer possible. 
+
+
+
+# Regression Testing
+I confiugred a yaml file and workflows folder to create the test environment, a requirements.txt file to set up the environemnt, and a test case but I simply couldn't figure out how to work this. I put a lot of work into this, but I simply don't know whats wrong. Hopefully the work I've done can get me some partial credit. 
