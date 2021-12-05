@@ -40,3 +40,6 @@ Regression testing
 ## test.py
 contains an attempt at a regression test for attack 1 (couldn't get it configured right)
 
+## Requirements.txt
+Another configuration file I put together for regression testing
+
