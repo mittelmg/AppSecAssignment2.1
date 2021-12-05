@@ -1,0 +1,4 @@
+python-decouple ==3.5
+django-cryptography==1.0
+django==1.11
+
