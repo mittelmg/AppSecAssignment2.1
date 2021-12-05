@@ -35,7 +35,7 @@ The 'part 2 complete' commit marks the files needed for part 2. The 'making sure
 which explains my changes 
 
 ## .github/workflows
-Regression testing
+Regression testing setup
 
 ## test.py
 contains an attempt at a regression test for attack 1 (couldn't get it configured right)
